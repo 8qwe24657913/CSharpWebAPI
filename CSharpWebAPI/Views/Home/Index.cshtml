@@ -1,0 +1,75 @@
+﻿<div class="jumbotron">
+    <h1>ASP.NET Comment Demo</h1>
+    <p class="lead">A demo for C# Web API</p>
+</div>
+<div class="row">
+        <style>
+        #app {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .comment {
+            border-radius: 0 4px 4px 0;
+            margin-left: -1px;
+        }
+        .comment-block {
+            margin: 5px 0;
+            border-style: solid;
+            border-color: #ddd;
+            border-width: 1px;
+            box-shadow: 0 3px 6px rgba(0,0,0,.05);
+        }
+        .comment-text {
+            padding: 5px;
+            word-break: break-word;
+            width: calc(100% - 80px);
+        }
+        .comment-userinput {
+            max-width: 100%;
+            width: 100%;
+        }
+        .comment-add {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 4px;
+        }
+        #mycomment {
+            min-height: 200px;
+        }
+        .leaveAComment {
+            margin: 0;
+            padding-bottom: 15px;
+        }
+    </style>
+    <div id="app" class="center-block">
+        <div class="comment comment-block clearfix" v-for="comment in comments" v-bind:id="'comment-' + comment.ID">
+            <article class="comment-body">
+                <footer class="comment-meta">
+                    <img v-bind:src="comment.GravatarUrl" width="80" height="80" alt="Avatar" class="avatar pull-left">
+                    <div class="comment-text pull-left">
+                        <b class="fn">{{comment.Author}} <<a v-bind:href="'mailto:' + comment.Email">{{comment.Email}}</a>></b>
+                        <span class="says">says:</span>
+                        <a class="pull-right" rel="nofollow" href="javascript:" v-on:click="deleteComment(comment)">Delete #{{comment.ID}}</a>
+                        <p>{{comment.Text}}</p>
+                    </div>
+                </footer>
+            </article>
+        </div>
+        <div class="comment-block comment-add">
+            <h3 class="leaveAComment"><b>Leave a Comment</b></h3>
+            <form v-on:submit.prevent="onSubmit">
+                <div class="form-group">
+                    <input class="comment-userinput form-control" id="author" placeholder="Author" v-model="myComment.Author" maxlength="10" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="comment-userinput form-control" id="email" placeholder="Email" v-model="myComment.Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="comment-userinput form-control" id="mycomment" placeholder="Your Comment" v-model="myComment.Text" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/bundles/commentDemo")
