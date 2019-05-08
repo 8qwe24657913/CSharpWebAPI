@@ -28,6 +28,7 @@ C# 课程作业4 - WebAPI
 2. Ninject 在新版本中遇到的问题，解决方法见 `NinjectDependencyResolver`
 3. `System.Web.Http` 与 `System.Net.Http.Formatting`中各有一个 `HttpRequestMessageExtensions` 类，使用`extern alias` 解决（见[此处](https://stackoverflow.com/questions/36413123/cs0433-ambiguous-reference-system-net-http-httprequestmessageextensions)）
 4. `JsonObject` 格式化报错，使用 `JsonMediaTypeFormatter`
+5. 这个问题是传到 Github 后发现的：Github 告诉我自带的 bootstrap 有 XSS 风险，需要更新，感谢 Github
 
 其中`extern alias`的问题用户体验不是很好，VS 给出了错误原因但没有任何解决方法提示，还好 stackoverflow 捞了一手（
 
